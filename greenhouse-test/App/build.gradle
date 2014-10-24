@@ -13,6 +13,13 @@ repositories {
 }
 
 android {
+
+     lintOptions {
+        abortOnError true
+        checkAllWarnings true
+        warningsAsErrors true
+    }
+
     compileSdkVersion 21
     buildToolsVersion "21.0.1"
 
