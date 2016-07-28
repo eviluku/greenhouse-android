@@ -26,6 +26,12 @@ android {
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 21
+        def greenhouseBuild = System.getenv()["GREENHOUSE_BUILD"]
+        if (greenhouseBuild) {
+            def buildNumber = System.getenv()["BUILD_NUMBER"]
+            versionName = "1.0." + buildNumber 
+            versionCode = Integer.valueOf(buildNumber)
+        }
     }
 
     signingConfigs {
@@ -40,7 +46,6 @@ android {
         release {
             signingConfig signingConfigs.release
             runProguard true
-            proguardFile getDefaultProguardFile('proguard-android-optimize.txt')
         }
     }
 }
